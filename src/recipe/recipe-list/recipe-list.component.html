@@ -1,0 +1,68 @@
+
+ <mat-toolbar>
+  <img
+  [src]="imageUrl"
+    alt="Logo"
+    class="logo"
+    (click)="goToHome()"
+    style="cursor: pointer"
+  />
+
+  <span class="spacer"></span>
+
+  <mat-form-field  appearance="outline" class="search-field">
+    <mat-label>Search Recipe</mat-label>
+    <input style="height: 5px;" 
+      matInput
+      placeholder="Enter recipe name"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="filterRecipes()"
+    />
+  </mat-form-field>
+
+  <button mat-button routerLink="/add-recipe" routerLinkActive="active"  *ngIf="isLoggedIn">
+    Add New Recipe
+  </button>
+
+  <button mat-button routerLink="/recipe-list" routerLinkActive="active"  *ngIf="isLoggedIn">
+    Recipe List
+  </button>
+
+  <button mat-button routerLink="/shopping-list" routerLinkActive="active"  *ngIf="isLoggedIn">
+    Shopping List
+  </button>
+
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+  >
+    Logout
+  </button>
+</mat-toolbar> 
+
+<div class="recipe-list" color="accent">
+  <mat-card *ngFor="let recipe of filteredRecipes" class="recipe-card">
+    <mat-card-header>
+      <img
+  [src]="imgUrl"
+    alt="Logo"
+    class="img1"
+    style="cursor: pointer"
+  />
+      <mat-card-title>{{ recipe.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="recipe.thumbnail_url" />
+    <mat-card-content>
+      <p>Description: {{ recipe.description }}</p>
+      <p>Time to Prepare: {{ recipe.time_to_prepare | timeConvert }}</p>
+      <p>Author: {{ recipe.author }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/details', recipe._id]">
+        View Details
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

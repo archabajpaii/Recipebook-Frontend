@@ -1,0 +1,73 @@
+mat-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+
+  mat-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 16px;
+
+      input,
+      textarea {
+        padding: 10px;
+        font-size: 16px;
+      }
+    }
+
+    h3 {
+      margin: 16px 0 8px;
+      color: #555;
+      text-align: left;
+    }
+
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 8px;
+      margin-bottom: 8px;
+
+      span:first-child {
+        flex-grow: 0;
+        color: #444;
+        margin-right: 15px;
+      }
+
+      .quantity-container {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 8px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  p {
+    color: #f44336;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-title>Recipe Details</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="editRecipeForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Author</mat-label>
+        <input matInput formControlName="author" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Time to Prepare (minutes)</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="time_to_prepare"
+          required
+        />
+      </mat-form-field>
+
+      <h3>Ingredients</h3>
+      <div formArrayName="ingredients">
+        <div
+          *ngFor="let ingredient of ingredients.controls; let i = index"
+          [formGroupName]="i"
+          class="ingredient-item"
+        >
+          <span>{{ ingredient.get("name")?.value }}</span>
+          <span style="margin-left: 8px"
+            >Quantity: {{ ingredient.get("quantity")?.value }}</span
+          >
+          <button
+            mat-icon-button
+            style="flex-shrink: inherit"
+            type="button"
+            color="warn"
+            (click)="removeIngredient(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button type="button" (click)="addQuantity(i)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <p *ngIf="message">{{ message }}</p>
+
+      <button
+        mat-stroked-button
+        type="button"
+        color="primary"
+        (click)="addIngredient()"
+      >
+        Add Ingredient
+      </button>
+      <br /><br />
+      <button mat-raised-button color="accent" type="submit">
+        Update Recipe
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

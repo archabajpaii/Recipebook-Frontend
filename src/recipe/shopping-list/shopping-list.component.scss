@@ -1,0 +1,88 @@
+mat-card {
+    margin: 16px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
+  
+    mat-card-header {
+      background-color: #4caf50; 
+      color: white;
+      padding: 16px; 
+      border-radius: 8px 8px 0 0; 
+      text-align: center; 
+  
+      mat-card-title {
+        font-size: 1.5em; 
+        font-weight: bold; 
+        margin-top: 10px; 
+      }
+    }
+    .home-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px; 
+       margin-left: auto;
+      }
+      
+    mat-card-content {
+      padding: 16px; 
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      text-align: center; 
+  
+      p {
+        font-size: 1.2em; 
+        color: #6c757d; 
+        margin-bottom: 16px; 
+      }
+  
+      mat-list {
+        width: 100%; 
+  
+        mat-list-item {
+          display: flex; 
+          justify-content: space-between;
+          align-items: center; 
+          padding: 8px; 
+          border-bottom: 1px solid #e0e0e0; 
+          transition: background-color 0.3s; 
+  
+          &:hover {
+            background-color: #f1f1f1; 
+          }
+  
+         
+            button {
+                margin-left: 8px; 
+        
+                &.increment {
+                  color: #1e88e5; 
+        
+                  &:hover {
+                    color: #1565c0; 
+                  }
+                }
+        
+                &.decrement {
+                  color: #e343ff; 
+        
+                  &:hover {
+                    color: #e343ff; 
+                  }
+                }
+        
+                &.delete {
+                  color: #e53935; 
+        
+                  &:hover {
+                    color: #c62828; 
+                  }
+                }
+        }
+      }
+    }
+  }
+}
+
+  

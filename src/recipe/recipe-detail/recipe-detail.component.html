@@ -1,0 +1,52 @@
+<mat-card class="recipe-detail-card">
+  <mat-card-header>
+    <img mat-card-image [src]="imageUrl" class="recipe-image" />
+    <div class="header-content">
+      <mat-card-title>{{ recipe.title || "Recipe Title" }}</mat-card-title>
+      <mat-card-subtitle>by {{ recipe.author || "Unknown" }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      <strong>Description : </strong
+      >{{ recipe.description || "No description available." }}
+    </p>
+
+    <p><strong>Ingredients:</strong></p>
+    <p>
+      <mat-list>
+        <mat-list-item *ngFor="let ingredient of recipe?.ingredients || []"
+          >{{ ingredient.name }} : {{ ingredient.quantity }}
+        </mat-list-item>
+      </mat-list>
+    </p>
+
+    <p>
+      <strong>Time to prepare:</strong>
+      {{ recipe.time_to_prepare || 0 }} minutes
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addIngredientsToShoppingList()"
+      routerLink="/recipes"
+    >
+      Add to Shopping list
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="editRecipe()"
+      [routerLink]="['/edit-recipe', recipe._id]"
+    >
+      Edit
+    </button>
+    <button mat-raised-button color="warn" (click)="confirmDelete()">
+      Delete
+    </button>
+  </mat-card-actions>
+</mat-card>
